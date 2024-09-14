@@ -1,0 +1,460 @@
+:root {
+  --primary1: #000000 ;
+  --primary2: #FFFFFF;
+  --secondary1: #808080;
+  --secondary2: #CCCCCC;
+  --wheelRotation: 0deg;
+}
+
+html{
+  font-size: max(1.2vmin, 0.75vmax);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-optical-sizing: auto;
+}
+
+@keyframes visible {
+  from
+  {opacity:0;
+  translate:0 1rem;}
+  to {opacity:1;
+    translate:0;}
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#layout {
+  transition: 0.5s;
+  /* filter: blur(0.05rem)*/
+}
+
+#layout > *, #content > *:not(.wheel), .title > * {
+  transition: 0.5s;
+}
+
+canvas {
+  display: block;
+}
+
+#overlay {
+  display: block;
+  position: fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 2rem;
+  transition: 0.5s;
+}
+
+.han, .viet, .eng, .wheel, .date {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+nav {
+  position: absolute;
+  display: flex;
+  bottom: 2rem;
+  width: calc(100% - 4rem);
+  justify-content: space-between;
+  text-transform: uppercase;
+  color: var(--secondary2);
+  font-family: "Commissioner", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+nav > p {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+nav p:nth-child(1) {
+  text-align: left;
+}
+
+nav p:nth-child(2) {
+  text-align: center;
+}
+
+nav p:nth-child(3) {
+  text-align: right;
+}
+
+.date {
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--secondary2);
+  font-family: "Commissioner", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wheel {
+  position: absolute;
+  aspect-ratio: 1;
+  height: 50rem;
+  width: 50rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(calc(var(--wheelRotation)*-1));
+  transition: none;
+  z-index: -1;
+}
+
+.wheel > * {
+  transition: 0.5s;
+}
+
+.cls-1 {
+  fill: none;
+}
+
+.cls-1, .cls-2 {
+  stroke: var(--secondary1);
+  stroke-miterlimit: 10;
+}
+
+.cls-2 {
+  fill: var(--secondary1);
+}
+
+.cls-3 {
+  fill: var(--primary1);
+  stroke: var(--secondary1);
+  stroke-miterlimit: 10;
+}
+
+.layoutA {
+  background: var(--primary1);
+  --currentfill: var(--primary2);
+}
+
+.layoutA *::-moz-selection { /* Code for Firefox */
+  color: var(--primary2);
+  background: var(--secondary1);
+}
+
+.layoutA *::selection {
+  color: var(--primary2);
+  background: var(--secondary1);
+}
+
+.layoutA .title{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  gap: 5rem;
+  margin:0;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.layoutA .han {
+  color:var(--primary2);
+  font-size: 16rem;
+  font-family: "Noto Serif TC", serif;
+  transform: translateY(-1rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.layoutA .viet, .layoutA .eng {
+  font-family: "Commissioner", sans-serif;
+  text-transform: uppercase;
+  color: var(--secondary1);
+  font-size: 1.5rem;
+}
+
+.layoutA .poem{
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  line-height: 1.5;
+  left:50%;
+  top:50%;
+  width: 87%;
+  transform: translate(-50%,-50%);
+  color:var(--primary2);
+}
+
+.layoutB {
+  background: var(--primary2);
+  --currentfill: var(--primary1);
+}
+
+.layoutB *::-moz-selection { /* Code for Firefox */
+  color: var(--primary1);
+  background: var(--secondary2);
+}
+
+.layoutB *::selection {
+  color: var(--primary1);
+  background: var(--secondary2);
+}
+
+.layoutB .wheel {
+  left: 5rem;
+}
+
+.layoutB .cls-1 {
+  fill: none;
+}
+
+.layoutB .cls-1, .layoutB .cls-2 {
+  stroke: var(--secondary2);
+  stroke-miterlimit: 10;
+}
+
+.layoutB .cls-2 {
+  fill: var(--secondary2);
+}
+
+.layoutB .cls-3, .layoutC .cls-3 {
+  display:none
+}
+
+.layoutB .date, .layoutB nav {
+  color: var(--secondary1);
+}
+
+.layoutB .han {
+  position: absolute;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 8rem;
+  font-family: "Noto Serif TC", serif;
+  right: 2rem;
+  color: var(--secondary2)
+}
+
+.layoutB .viet, .layoutB .eng {
+  color: var(--secondary1);
+  font-family: "Commissioner", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.layoutB .poem {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 3rem;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: var(--primary1);
+}
+
+.layoutC{
+  background: var(--primary1);
+  --currentfill: var(--primary2);
+}
+
+.layoutC *::-moz-selection { /* Code for Firefox */
+  color: var(--primary2);
+  background: var(--secondary1);
+}
+
+.layoutC *::selection {
+  color: var(--primary2);
+  background: var(--secondary1);
+}
+
+.layoutC .wheel {
+  left: initial;
+  right: 5rem;
+  top: 5rem;
+  transform: translate(50%, -50%) rotate(calc(var(--wheelRotation)*-1));
+}
+
+.layoutC .title{
+  display: grid;
+  grid-template-columns: 5.6rem auto;
+  grid-template-rows: auto 4rem;
+  max-width: calc((100% - 8rem)/4 - 2rem);
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.layoutC .title.short {
+  max-width: calc((100% - 8rem)/7*2);
+}
+
+.layoutC h3 {
+  color: var(--secondary2);
+}
+
+.layoutC .han {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 3rem;
+  font-family: "Noto Serif TC", serif;
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: start;
+  transform: translateY(1.2rem);
+}
+
+.layoutC .viet {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+}
+
+.layoutC .viet > * {
+font-family: 'Ojuju', serif;
+font-style: normal;
+font-weight: 700;
+font-size: 8rem;
+text-transform: capitalize;
+line-height: 1;
+color: var(--primary2);
+width: 100%;
+}
+
+.layoutC .viet > :nth-child(1) {
+text-align: left;
+}
+
+.layoutC .viet > :nth-last-child(1) {
+  text-align: right;
+  }
+
+.layoutC .eng {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+  text-align: right;
+  align-self: end;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.layoutC .poem {
+  position: absolute;
+  right: 2rem;
+  bottom: 8rem;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: var(--primary2);
+  font-family: 'Commissioner', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  min-width: calc((100% - 8rem)/3);
+}
+
+nav {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+  
+canvas {
+  position: absolute;
+}
+
+#noise-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+#indexScreen {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  padding: 8rem 2rem;
+  background: var(--primary2);
+  font-family: "Commissioner", sans-serif;
+  font-size: 1.5rem;
+  color: var(--primary1);
+  z-index: 100;
+  overflow-y: scroll;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s opacity 1s;
+}
+
+#indexScreen.visible {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 100;
+}
+
+#indexScreen nav {
+  position: fixed;
+  top: 2rem;
+  pointer-events: auto;
+  cursor: pointer;
+  height: 2rem;
+}
+
+#termIndex {
+  width: 50%;
+  gap: 1rem;
+  border-collapse: collapse;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+}
+
+tr:hover {
+  background-color: var(--secondary2);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+tr.highlighted {
+  background-color: var(--secondary1);
+}
+
+@media (orientation: landscape) {
+  .layoutA .poem {
+    flex-direction: row;
+  }
+}
+
+@media (orientation: portrait) {
+  .layoutA .poem {
+    flex-direction: column;
+    height: 75%;
+  }
+}

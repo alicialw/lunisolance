@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lunisolance</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&family=Ojuju:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
+
+<body id="layout" class="layoutA">
+  <div id="overlay">
+    <nav>
+      <p>Double click to change layout</p>
+      <p>Left/Right Arrow to browse</p>
+      <p>Press H to hide text overlay</p>
+    </nav>
+    <div id="content">
+      <p class="date"></p>
+      <div class="title">
+        <h2 class="viet"><span></span><span></span></h2>
+        <h3 class="han"></h3>
+        <h3 class="eng"></h3>
+      </div>
+      <h4 class="poem"><span></span><br>
+        <span><br>
+        </span>
+      </h4>
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841 841" class="wheel">
+        <path class="cls-1" d="M420.5,420.5l405.69,108.7c-4.74,17.71-10.64,35.09-17.66,52.02-7.02,16.94-15.13,33.4-24.3,49.27l-363.73-210h0Z"/>
+        <path class="cls-1" d="M420.5,420.5l363.73,210c-9.17,15.88-19.36,31.14-30.52,45.68-11.16,14.54-23.26,28.34-36.22,41.31l-296.98-296.98h0Z"/>
+        <path class="cls-1" d="M420.5,420.5l296.98,296.98c-12.96,12.96-26.76,25.06-41.31,36.22-14.54,11.16-29.8,21.36-45.68,30.52l-210-363.73h.01Z"/>
+        <path class="cls-1" d="M420.5,420.5l210,363.73c-15.88,9.17-32.34,17.28-49.27,24.3-16.94,7.02-34.32,12.91-52.02,17.66l-108.7-405.69h0Z"/>
+        <path class="cls-1" d="M420.5,420.5l108.7,405.69c-17.71,4.74-35.71,8.33-53.88,10.72-18.18,2.39-36.49,3.59-54.82,3.59v-420Z"/>
+        <path class="cls-1" d="M420.5,420.5v420c-18.33,0-36.65-1.2-54.82-3.59-18.18-2.39-36.18-5.97-53.88-10.72l108.7-405.69Z"/>
+        <path class="cls-1" d="M420.5,420.5l-108.7,405.69c-17.71-4.74-35.09-10.64-52.02-17.66-16.94-7.02-33.4-15.13-49.27-24.3l210-363.73h-.01Z"/>
+        <path class="cls-1" d="M420.5,420.5l-210,363.73c-15.88-9.17-31.14-19.36-45.68-30.52-14.54-11.16-28.34-23.26-41.31-36.22l296.98-296.98h0Z"/>
+        <path class="cls-1" d="M420.5,420.5L123.52,717.48c-12.96-12.96-25.06-26.76-36.22-41.31-11.16-14.54-21.36-29.8-30.52-45.68l363.73-210h-.01Z"/>
+        <path class="cls-1" d="M420.5,420.5L56.77,630.5c-9.17-15.88-17.28-32.34-24.3-49.27-7.02-16.94-12.91-34.32-17.66-52.02l405.69-108.7h0Z"/>
+        <path class="cls-2" d="M420.5,420.5L14.81,529.2c-4.74-17.71-8.33-35.71-10.72-53.88-2.39-18.18-3.59-36.49-3.59-54.82h420Z"/>
+        <path class="cls-1" d="M420.5,420.5H.5c0-18.33,1.2-36.65,3.59-54.82,2.39-18.18,5.97-36.18,10.72-53.88l405.69,108.7Z"/>
+        <path class="cls-1" d="M420.5,420.5L14.81,311.8c4.74-17.71,10.64-35.09,17.66-52.02,7.02-16.94,15.13-33.4,24.3-49.27l363.73,210h0Z"/>
+        <path class="cls-1" d="M420.5,420.5L56.77,210.5c9.17-15.88,19.36-31.14,30.52-45.68s23.26-28.34,36.22-41.31l296.98,296.98h0Z"/>
+        <path class="cls-1" d="M420.5,420.5L123.52,123.52c12.96-12.96,26.76-25.06,41.31-36.22,14.54-11.16,29.8-21.36,45.68-30.52l210,363.73h-.01Z"/>
+        <path class="cls-1" d="M420.5,420.5L210.5,56.77c15.88-9.17,32.34-17.28,49.27-24.3,16.94-7.02,34.32-12.91,52.02-17.66l108.7,405.69h.01Z"/>
+        <path class="cls-1" d="M420.5,420.5L311.8,14.81c17.71-4.74,35.71-8.33,53.88-10.72,18.18-2.39,36.49-3.59,54.82-3.59v420Z"/>
+        <path class="cls-1" d="M420.5,420.5V.5c18.33,0,36.65,1.2,54.82,3.59,18.18,2.39,36.18,5.97,53.88,10.72l-108.7,405.69Z"/>
+        <path class="cls-1" d="M420.5,420.5L529.2,14.81c17.71,4.74,35.09,10.64,52.02,17.66,16.94,7.02,33.4,15.13,49.27,24.3l-210,363.73h0Z"/>
+        <path class="cls-1" d="M420.5,420.5L630.5,56.77c15.88,9.17,31.14,19.36,45.68,30.52s28.34,23.26,41.31,36.22l-296.98,296.98h0Z"/>
+        <path class="cls-1" d="M420.5,420.5L717.48,123.52c12.96,12.96,25.06,26.76,36.22,41.31,11.16,14.54,21.36,29.8,30.52,45.68l-363.73,210h.01Z"/>
+        <path class="cls-1" d="M420.5,420.5l363.73-210c9.17,15.88,17.28,32.34,24.3,49.27,7.02,16.94,12.91,34.32,17.66,52.02l-405.69,108.7h0Z"/>
+        <path class="cls-1" d="M420.5,420.5l405.69-108.7c4.74,17.71,8.33,35.71,10.72,53.88,2.39,18.18,3.59,36.49,3.59,54.82h-420Z"/>
+        <path class="cls-1" d="M420.5,420.5h420c0,18.33-1.2,36.65-3.59,54.82-2.39,18.18-5.97,36.18-10.72,53.88l-405.69-108.7Z"/>
+        <circle class="cls-3" cx="420.5" cy="420.5" r="360"/>
+      </svg>
+    </div>
+  </div>
+  <div id="indexScreen">
+    <nav>
+      <p>About</p>
+      <p id="closeIndex">Back</p>
+      <p>Credits</p>
+    </nav>
+    <table id="termIndex"></table>
+  </div>
+  <div id="noise-container"></div>
+  <script src="sketches/index.js"></script>
+  <script src="sketches/sketch.js"></script>
+  <script src="sketches/rain.js"></script>
+  <script src="sketches/mist.js"></script>
+  <script src="sketches/freeze.js"></script>
+
+</body>
+
+</html>
