@@ -151,7 +151,7 @@ let dataOverlay = [
     engName: "Beginning of Summer",
     dateCalendar: "May 6—20",
     poem1: "Ngày dài ứng luật giáp trung,\nTiết hè khí chuyển theo vòng lục dương.",
-    poem2: "Mùa này muôn vật nở nang,\nGió hỏe sóng liễu du dương điều hoa.",
+    poem2: "Mùa này muôn vật nở nang,\nGió hòe sóng liễu du dương điều hoa.",
     canvasId: "lapha",
     primary1: "#FAEDD2",
     primary2: "#D23255",
