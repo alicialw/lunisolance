@@ -331,6 +331,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding: 0px;
+font-family: 'Commissioner', sans-serif;
 }
 
 .layoutC .viet > * {
@@ -359,6 +360,7 @@ text-align: left;
   align-self: end;
   font-size: 1.5rem;
   text-transform: uppercase;
+  font-family: 'Commissioner', sans-serif;
 }
 
 .layoutC .poem {
