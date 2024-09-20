@@ -5,6 +5,7 @@ function freezeSketch (p) {
   p.setup = function() {
     bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
     bgScene.id("freeze");
+    p.clear()
     p.noFill();
     Frosted(p);
     setInterval(function() {

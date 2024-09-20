@@ -15,16 +15,27 @@
     href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&family=Ojuju:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
 
+  <script src="http://unpkg.com/tone"></script>
   <script src="libraries/p5.min.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
+  <!--<script src="libraries/p5.sound.min.js"></script>-->
 </head>
 
 <body id="layout" class="layoutA">
+  <div id="loaderScreen"><div class="loader"></div></div>
+  <div id="starter" class="visible">
+    <h4>This site displays the 24 Solar Terms of the Traditional&nbsp;East&nbsp;Asian Lunisolar&nbsp;Calendar.</h4>
+    <p>(Enable sound for the best experience)</p>
+  </div>
   <div id="overlay">
     <nav>
-      <p>Double click to change layout</p>
-      <p>Left/Right Arrow to browse</p>
-      <p>Press H to hide text overlay</p>
+      <p>Right click to save GIF<br>
+        Double click to change layout
+      </p>
+      <p id="arrow">Left/Right Arrow to browse
+      </p>
+      <p>Press M to mute/unmute<br>
+        Press H to hide/unhide text
+      </p>
     </nav>
     <div id="content">
       <p class="date"></p>
@@ -100,11 +111,22 @@
     <table id="termIndex"></table>
   </div>
   <div id="noise-container"></div>
+  <script src="audio/music.js"></script>
   <script src="sketches/index.js"></script>
   <script src="sketches/sketch.js"></script>
   <script src="sketches/rain.js"></script>
+  <script src="sketches/heat.js"></script>
   <script src="sketches/mist.js"></script>
   <script src="sketches/freeze.js"></script>
+  
+  <script src="audio/musicA1.js"></script>
+  <script src="audio/musicA2.js"></script>
+  <script src="audio/musicB1.js"></script>
+  <script src="audio/musicB2.js"></script>
+  <script src="audio/musicC1.js"></script>
+  <script src="audio/musicC2.js"></script>
+  <script src="audio/musicD1.js"></script>
+  <script src="audio/musicD2.js"></script>
 
 </body>
 

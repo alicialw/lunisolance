@@ -1,17 +1,23 @@
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'h' || event.key === 'H') {
-    var overlay = document.getElementById('overlay');
-    if (overlay.style.opacity === '0') {
-      overlay.style.opacity = '1';
-    } else {
-      overlay.style.opacity = '0';
-    }
-  }
-});
+document.onreadystatechange = function() { 
+  if (document.readyState !== "complete") { 
+      document.querySelector("body").style.visibility = "hidden"; 
+      document.querySelector("#loaderScreen").style.visibility = "visible"; 
+  } else { 
+      setTimeout(function() {
+          document.querySelector("#loaderScreen").style.display = "none"; 
+      }, 1000);
+
+      document.querySelector("#loaderScreen").style.zIndex = -1; 
+      document.querySelector("#loaderScreen").style.opacity = 0; 
+      document.querySelector("body").style.visibility = "visible"; 
+  } 
+};
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const layoutElement = document.getElementById('layout');
   const layouts = ['layoutA', 'layoutB', 'layoutC'];
+  const starterScreen = document.getElementById('starter');
   let currentLayoutIndex = 0;
 
   let clickCount = 0;
@@ -33,6 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  starterScreen.addEventListener('click', function() {
+    starterScreen.classList.remove('visible');
+    Tone.start();
+  })
+
+  const indexToShow = showSlideBasedOnDate();
+
+  if (indexToShow !== -1) {
+      currentSlideIndex = indexToShow;
+      showSlide(currentSlideIndex);
+  }
 });
 
 let dataOverlay = [
@@ -51,6 +68,8 @@ let dataOverlay = [
     secondary2: "#FFA5A5",
     wheelRotation: "315deg",
     pA1: 12,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -69,6 +88,8 @@ let dataOverlay = [
     secondary2: "#80AEC3",
     wheelRotation: "330deg",
     pA1: 24,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -87,6 +108,8 @@ let dataOverlay = [
     secondary2: "#F3B63C",
     wheelRotation: "345deg",
     pA1: 48,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -105,6 +128,8 @@ let dataOverlay = [
     secondary2: "#FBD27F",
     wheelRotation: "0deg",
     pA1: 24,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -123,6 +148,8 @@ let dataOverlay = [
     secondary2: "#71B33D",
     wheelRotation: "15deg",
     pA1: 3,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -141,6 +168,8 @@ let dataOverlay = [
     secondary2: "#71B33D",
     wheelRotation: "30deg",
     pA1: 96,
+    pA2: 10,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -159,6 +188,8 @@ let dataOverlay = [
     secondary2: "#9F1C33",
     wheelRotation: "45deg",
     pA1: 12,
+    pA2: 10,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -177,6 +208,8 @@ let dataOverlay = [
     secondary2: "#E9772C",
     wheelRotation: "60deg",
     pA1: 6,
+    pA2: 10,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -195,6 +228,8 @@ let dataOverlay = [
     secondary2: "#E9772C",
     wheelRotation: "75deg",
     pA1: 3,
+    pA2: 10,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -213,6 +248,8 @@ let dataOverlay = [
     secondary2: "#FFC0A5",
     wheelRotation: "90deg",
     pA1: 0,
+    pA2: 20,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -231,6 +268,8 @@ let dataOverlay = [
     secondary2: "#F9BA80",
     wheelRotation: "105deg",
     pA1: 0,
+    pA2: 40,
+    pB2: 200,
     pA3: 0,
     pA4: 0,
   },
@@ -249,6 +288,8 @@ let dataOverlay = [
     secondary2: "#F2D490",
     wheelRotation: "120deg",
     pA1: 0,
+    pA2: 60,
+    pB2: 200,
     pA3: 0,
     pA4: 0,
   },
@@ -267,6 +308,8 @@ let dataOverlay = [
     secondary2: "#FBC97E",
     wheelRotation: "135deg",
     pA1: 0,
+    pA2: 10,
+    pB2: 100,
     pA3: 0,
     pA4: 0,
   },
@@ -285,6 +328,8 @@ let dataOverlay = [
     secondary2: "#E18740",
     wheelRotation: "150deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 0,
   },
@@ -303,6 +348,8 @@ let dataOverlay = [
     secondary2: "#DB9B5B",
     wheelRotation: "165deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 100,
     pA4: 0,
   },
@@ -321,6 +368,8 @@ let dataOverlay = [
     secondary2: "#8A5D1C",
     wheelRotation: "180deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 125,
     pA4: 0,
   },
@@ -339,6 +388,8 @@ let dataOverlay = [
     secondary2: "#79A5BB",
     wheelRotation: "195deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 150,
     pA4: 0,
   },
@@ -357,6 +408,8 @@ let dataOverlay = [
     secondary2: "#2D618F",
     wheelRotation: "210deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 175,
     pA4: 0,
   },
@@ -375,6 +428,8 @@ let dataOverlay = [
     secondary2: "#B1CAD8",
     wheelRotation: "225deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 150,
     pA4: 1,
   },
@@ -393,6 +448,8 @@ let dataOverlay = [
     secondary2: "#A4C1D1",
     wheelRotation: "240deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 125,
     pA4: 12,
   },
@@ -411,6 +468,8 @@ let dataOverlay = [
     secondary2: "#C3C7DB",
     wheelRotation: "255deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 100,
     pA4: 25,
   },
@@ -429,6 +488,8 @@ let dataOverlay = [
     secondary2: "#CDD3DF",
     wheelRotation: "270deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 50,
   },
@@ -447,6 +508,8 @@ let dataOverlay = [
     secondary2: "#A7ABC3",
     wheelRotation: "285deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 100,
   },
@@ -465,6 +528,8 @@ let dataOverlay = [
     secondary2: "#AAAFD6",
     wheelRotation: "300deg",
     pA1: 0,
+    pA2: 10,
+    pB2:0,
     pA3: 0,
     pA4: 150,
   },
@@ -473,6 +538,8 @@ let dataOverlay = [
 let slide;
 let root = document.documentElement;
 let currentSlideIndex = 0;
+const audioFiles = [polySynthA1, polySynthA2, polySynthB1, polySynthB2, polySynthC1, polySynthC2, polySynthD1, polySynthD2];
+const audioRanges = [[0, 2], [3, 5], [6, 8], [9, 11], [12, 14], [15, 17], [18, 20], [21, 23]];
 
 
 const table = document.getElementById("termIndex");
@@ -491,7 +558,6 @@ document.addEventListener('click', (event) => {
   const closeIndex = event.target.closest('#closeIndex');
   const indexScreen = document.getElementById('indexScreen');
   showSlide(currentSlideIndex);
-
   if (closeIndex) {
     indexScreen.classList.remove('visible');
   }
@@ -527,6 +593,7 @@ dataOverlay.forEach((data, index) => {
   });
 });
 
+let heatInstance 
 let mistInstance;
 let freezeInstance;
 
@@ -537,6 +604,17 @@ const updateCSSVariables = (dataOverlay) => {
     root.style.setProperty(`--${key}`, dataOverlay[key]);
   }
 };
+
+let currentAudioIndex = -1;
+let currentPlayingSound = null;
+
+function stopCurrentSound() {
+  if (currentPlayingSound) {
+      currentPlayingSound.disconnect();
+      console.log('Stopped the previously playing track');
+  }
+}
+
 
 function showSlide(index) {
   slide = dataOverlay[index];
@@ -555,24 +633,120 @@ function showSlide(index) {
   root.style.setProperty('--secondary1', slide.secondary1);
   root.style.setProperty('--secondary2', slide.secondary2);
   root.style.setProperty('--wheelRotation', slide.wheelRotation);
-  
+
+  slide.pA2 = dataOverlay[index].pA2;
+  slide.pB2 = dataOverlay[index].pB2;
+
+  slide.pB2 = dataOverlay[index].pB2;
+  if (heatInstance) {
+    heatInstance.remove();
+}
+
+
   slide.pA3 = dataOverlay[index].pA3;
   if (mistInstance) {
     mistInstance.remove();
 }
 
-slide.pA4 = dataOverlay[index].pA4;
-if (freezeInstance) {
-  freezeInstance.remove();
-}
+  slide.pA4 = dataOverlay[index].pA4;
+  if (freezeInstance) {
+    freezeInstance.remove();
+  }
 
   mistInstance = new p5(mistSketch);
-  console.log("Current slide.pA3:", slide.pA3);
   freezeInstance = new p5(freezeSketch);
-  console.log("Current slide.pA4:", slide.pA4);
   initializeDrops(slide.pA1);
   currentSlideIndex = index;
+
+  for (let i = 0; i < audioRanges.length; i++) {
+    const [start, end] = audioRanges[i];
+    if (index >= start && index <= end) {
+        stopCurrentSound();
+
+        if (audioFiles[i]) {
+            audioFiles[i].toDestination() 
+            currentPlayingSound = audioFiles[i];
+            console.log(`Triggering constant ${i + 1}`);
+        } else {
+            console.log(`Audio file for constant ${i + 1} is undefined.`);
+        }
+
+        currentAudioIndex = i;
+        break;
+    }
+} //*/
+
 }
+
+function showSlideBasedOnDate() {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1; // Adding 1 because getMonth is zero-based
+  const currentDay = currentDate.getDate();
+  
+  const dateRanges = [
+      { start: '02-04', end: '02-18' },
+      { start: '02-19', end: '03-05' },
+      { start: '03-06', end: '03-20' },
+      { start: '03-21', end: '04-04' },
+      { start: '04-05', end: '04-19' },
+      { start: '04-20', end: '05-05' },
+      { start: '05-06', end: '05-20' },
+      { start: '05-21', end: '06-05' },
+      { start: '06-06', end: '06-20' },
+      { start: '06-21', end: '07-06' },
+      { start: '07-07', end: '07-22' },
+      { start: '07-23', end: '08-07' },
+      { start: '08-08', end: '08-22' },
+      { start: '08-23', end: '09-07' },
+      { start: '09-08', end: '09-22' },
+      { start: '09-23', end: '10-07' },
+      { start: '10-08', end: '10-22' },
+      { start: '10-23', end: '11-06' },
+      { start: '11-07', end: '11-21' },
+      { start: '11-22', end: '12-06' },
+      { start: '12-07', end: '12-21' },
+      { start: '12-22', end: '01-05' },
+      { start: '01-06', end: '01-19' },
+      { start: '01-20', end: '02-03' }
+  ];
+
+  let indexToShow = -1;
+
+  dateRanges.forEach((range, index) => {
+      const [startMonth, startDay] = range.start.split('-').map(Number);
+      const [endMonth, endDay] = range.end.split('-').map(Number);
+
+      if (
+          (currentMonth == startMonth && currentDay >= startDay) ||
+          (currentMonth == endMonth && currentDay <= endDay) ||
+          (currentMonth > startMonth && currentMonth < endMonth)
+      ) {
+          indexToShow = index;
+      }
+  });
+
+  return indexToShow;
+}
+
+let isMuted = false;
+
+// Function to mute/unmute the Tone.js output
+function toggleMuteOutput() {
+    Tone.Master.mute = !Tone.Master.mute;
+    isMuted = Tone.Master.mute;
+    if (isMuted) {
+        console.log('Output muted');
+    } else {
+        console.log('Output unmuted');
+    }
+}
+
+// Event listener for keypress to trigger mute/unmute on "m" key press
+document.addEventListener('keypress', function (event) {
+    if (event.key === 'm' || event.key === 'M') {
+        toggleMuteOutput();
+    }
+});
 
 function nextSlide() {
   showSlide((currentSlideIndex + 1) % dataOverlay.length);
@@ -612,4 +786,4 @@ function handleGesture() {
     }
 }
 
-showSlide(currentSlideIndex);
+showSlide(currentSlideIndex)

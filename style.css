@@ -8,6 +8,11 @@
 
 html{
   font-size: max(1.2vmin, 0.75vmax);
+  font-family: "Commissioner", sans-serif;
+}
+
+button {
+  position: relative;
 }
 
 * {
@@ -15,6 +20,7 @@ html{
   padding: 0;
   margin: 0;
   font-optical-sizing: auto;
+  text-wrap: pretty;
 }
 
 @keyframes visible {
@@ -31,6 +37,50 @@ html, body {
   overflow: hidden;
   width: 100%;
   height: 100%;
+}
+
+#loaderScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom:0;
+  left:0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary1);
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid var(--secondary2);
+  animation: prixClipFix 2s linear infinite ;
+}
+
+@keyframes rotate {
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
 }
 
 #layout {
@@ -58,7 +108,20 @@ canvas {
   transition: 0.5s;
 }
 
-.han, .viet, .eng, .wheel, .date {
+.han,
+.viet,
+.eng,
+.wheel,
+.date {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.han.date:hover,
+.viet.date:hover,
+.eng.date:hover,
+.wheel.date:hover,
+.date:hover {
   pointer-events: auto;
   cursor: pointer;
 }
@@ -106,6 +169,56 @@ nav p:nth-child(3) {
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#arrow {
+  align-self: flex-end;
+}
+
+#starter {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  gap: 2rem;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--primary2);
+  color: var(--primary1);
+  align-items: center;
+  z-index: 101;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(100%);
+  transition: 1s;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#starter.visible {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 100;
+}
+
+#starter h4 {
+  width: 75vmin;
+  font-family: "Commissioner", sans-serif;
+  font-size: 2.5rem;
+}
+
+#starter p {
+  font-family: "Commissioner", sans-serif;
+  font-size: 1rem;
+  color: var(--secondary1);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#content {
+  z-index: 100;
 }
 
 .wheel {
@@ -192,14 +305,20 @@ nav p:nth-child(3) {
   justify-content: space-between;
   text-align: center;
   font-family: 'Commissioner', sans-serif;
-  font-weight: 600;
+  font-size: 1rem;
   text-transform: uppercase;
   line-height: 1.5;
   left:50%;
   top:50%;
-  width: 87%;
+  width: 96%;
   transform: translate(-50%,-50%);
   color:var(--primary2);
+}
+
+.layoutA .poem >* {
+  background: radial-gradient(var(--primary1) 30%, rgba(255,255,255,0) 60%);
+  padding: 6rem;
+  transition: 0.5s;
 }
 
 .layoutB {
@@ -272,6 +391,9 @@ nav p:nth-child(3) {
   font-weight: 400;
   text-align: center;
   color: var(--primary1);
+  background: radial-gradient(var(--primary2) 25%, rgba(255,255,255,0) 75%);
+  padding: 10rem 3rem;
+  transition: 0.5s;
 }
 
 .layoutC{
@@ -374,6 +496,11 @@ text-align: left;
   font-style: normal;
   font-weight: 400;
   min-width: calc((100% - 8rem)/3);
+  background: linear-gradient(90deg, var(--primary1) 25%, rgba(255,255,255,0) 100%);
+  transition: 0.5s;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
 }
 
 nav {
@@ -384,6 +511,8 @@ nav {
   
 canvas {
   position: absolute;
+  top:0;
+  left:0;
 }
 
 #noise-container {

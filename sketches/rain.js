@@ -12,6 +12,7 @@ function rainSketch(p) {
   p.setup = function() {
     bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
     bgScene.id("rain");
+    p.noFill();
     for (let i = 0; i < slide.pA1; i++) {
       d[i] = new Drops(p);
     }

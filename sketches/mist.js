@@ -10,6 +10,8 @@
       bgScene.id("mist");
       gridSize = p.width / m;
       p.strokeWeight(1);
+      p.fill(0,0)
+      p.clear()
     };
   
     p.draw = function() {
