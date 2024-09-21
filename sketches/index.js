@@ -1,3 +1,5 @@
+//loader
+
 document.onreadystatechange = function() { 
   if (document.readyState !== "complete") { 
       document.querySelector("body").style.visibility = "hidden"; 
@@ -13,12 +15,15 @@ document.onreadystatechange = function() {
   } 
 };
 
+//double click to change layout
 
 document.addEventListener('DOMContentLoaded', function() {
   const layoutElement = document.getElementById('layout');
   const layouts = ['layoutA', 'layoutB', 'layoutC'];
   const starterScreen = document.getElementById('starter');
   let currentLayoutIndex = 0;
+
+  //double click to change layout
 
   let clickCount = 0;
   let timer;
@@ -39,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  //starter screen intitialization
+
   starterScreen.addEventListener('click', function() {
     starterScreen.classList.remove('visible');
     Tone.start();
@@ -51,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
       showSlide(currentSlideIndex);
   }
 });
+
+// alllll the data here
 
 let dataOverlay = [
   {
@@ -535,12 +544,15 @@ let dataOverlay = [
   },
 ];
 
+//initializing the slide and audio index
+
 let slide;
 let root = document.documentElement;
 let currentSlideIndex = 0;
 const audioFiles = [polySynthA1, polySynthA2, polySynthB1, polySynthB2, polySynthC1, polySynthC2, polySynthD1, polySynthD2];
 const audioRanges = [[0,1], [2, 5], [6, 8], [9, 11], [12, 14], [15, 17], [18, 20], [21, 23]];
 
+//index screen and if move it will break so must stay here
 
 const table = document.getElementById("termIndex");
 const indexScreen = document.getElementById("indexScreen");
@@ -553,7 +565,6 @@ document.addEventListener('click', (event) => {
   }
 });
 
-
 document.addEventListener('click', (event) => {
   const closeIndex = event.target.closest('#closeIndex');
   const indexScreen = document.getElementById('indexScreen');
@@ -563,6 +574,7 @@ document.addEventListener('click', (event) => {
   }
 });
 
+//merging the viet entry if there's no break
 
 dataOverlay.forEach((data, index) => {
   const row = table.insertRow();
@@ -593,9 +605,14 @@ dataOverlay.forEach((data, index) => {
   });
 });
 
-let heatInstance 
+//bg canvas
+
+let rainInstance;
+let heatInstance;
 let mistInstance;
 let freezeInstance;
+
+//data to CSS
 
 const updateCSSVariables = (dataOverlay) => {
   const root = document.documentElement;
@@ -604,17 +621,6 @@ const updateCSSVariables = (dataOverlay) => {
     root.style.setProperty(`--${key}`, dataOverlay[key]);
   }
 };
-
-let currentAudioIndex = -1;
-let currentPlayingSound = null;
-
-function stopCurrentSound() {
-  if (currentPlayingSound) {
-      currentPlayingSound.disconnect();
-      //console.log('Stopped the previously playing track');
-  }
-}
-
 
 function showSlide(index) {
   slide = dataOverlay[index];
@@ -634,28 +640,48 @@ function showSlide(index) {
   root.style.setProperty('--secondary2', slide.secondary2);
   root.style.setProperty('--wheelRotation', slide.wheelRotation);
 
+  slide.pA1 = dataOverlay[index].pA1;
   slide.pA2 = dataOverlay[index].pA2;
   slide.pB2 = dataOverlay[index].pB2;
+  slide.pA3 = dataOverlay[index].pA3;
+  slide.pA4 = dataOverlay[index].pA4;
 
-  slide.pB2 = dataOverlay[index].pB2;
+  if (rainInstance) {
+    rainInstance.remove();
+}
   if (heatInstance) {
     heatInstance.remove();
 }
 
-
-  slide.pA3 = dataOverlay[index].pA3;
   if (mistInstance) {
     mistInstance.remove();
 }
 
-  slide.pA4 = dataOverlay[index].pA4;
   if (freezeInstance) {
     freezeInstance.remove();
   }
 
+  rainInstance = new p5(rainSketch);
+  heatInstance = new p5(heatSketch);
   mistInstance = new p5(mistSketch);
   freezeInstance = new p5(freezeSketch);
-  initializeDrops(slide.pA1);
+
+  if (slide.pA1 == 0 && rainInstance) {
+    rainInstance.remove();
+  }
+
+  if (slide.pB2 == 0 && heatInstance) {
+    heatInstance.remove();
+  }
+
+  if (slide.pA3 == 0 && mistInstance) {
+    mistInstance.remove();
+  }
+
+  if (slide.pA4 == 0 && freezeInstance) {
+    freezeInstance.remove();
+  }
+
   currentSlideIndex = index;
 
   for (let i = 0; i < audioRanges.length; i++) {
@@ -674,8 +700,7 @@ function showSlide(index) {
         currentAudioIndex = i;
         break;
     }
-} //*/
-
+}
 }
 
 function showSlideBasedOnDate() {
@@ -728,9 +753,21 @@ function showSlideBasedOnDate() {
   return indexToShow;
 }
 
+//disconnect the sound
+
+let currentAudioIndex = -1;
+let currentPlayingSound = null;
+
+function stopCurrentSound() {
+  if (currentPlayingSound) {
+      currentPlayingSound.disconnect();
+  }
+}
+
+// mute
+
 let isMuted = false;
 
-// Function to mute/unmute the Tone.js output
 function toggleMuteOutput() {
     Tone.Master.mute = !Tone.Master.mute;
     isMuted = Tone.Master.mute;
@@ -741,12 +778,13 @@ function toggleMuteOutput() {
     }
 }
 
-// Event listener for keypress to trigger mute/unmute on "m" key press
 document.addEventListener('keypress', function (event) {
     if (event.key === 'm' || event.key === 'M') {
         toggleMuteOutput();
     }
 });
+
+//switch slide
 
 function nextSlide() {
   showSlide((currentSlideIndex + 1) % dataOverlay.length);
@@ -764,6 +802,8 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//hide overlay
+
 document.addEventListener('keydown', function (event) {
   if (event.key === 'h' || event.key === 'H') {
     var overlay = document.getElementById('overlay');
@@ -774,6 +814,8 @@ document.addEventListener('keydown', function (event) {
     }
   }
 });
+
+//mobile
 
 let touchstartX = 0;
 let touchendX = 0;
@@ -796,5 +838,7 @@ function handleGesture() {
         prevSlide();
     }
 }
+
+//peace
 
 showSlide(currentSlideIndex)

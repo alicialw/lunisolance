@@ -35,7 +35,5 @@ function freezeSketch (p) {
       p.rect(y1, y2, 21, 232 / y1 - 3);
     }
   }
-
 };
 
-new p5(freezeSketch)

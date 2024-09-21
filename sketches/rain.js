@@ -1,10 +1,4 @@
 let Drops;
-let initializeDrops = function(upperLimit) {
-  d = new Array(upperLimit);
-  for (let i = 0; i < upperLimit; i++) {
-    d[i] = new Drops(p);
-  }
-};
 
 function rainSketch(p) {
   let d = [];
@@ -23,19 +17,13 @@ function rainSketch(p) {
     p.frameRate();
     p.clear();
     p.rect(0, 0, p.width, p.height);
+    
     for (let i = 0; i < d.length; i++) {
       if (d[i].y > d[i].endPos) {
         d[i].end();
       } else {
         d[i].display();
       }
-    }
-  };
-
-  initializeDrops = function(upperLimit) {
-    d = new Array(upperLimit);
-    for (let i = 0; i < upperLimit; i++) {
-      d[i] = new Drops(p);
     }
   };
 
@@ -83,10 +71,9 @@ function rainSketch(p) {
       }
     }
   }
-  
-};
+}
 
-new p5(rainSketch);
+
 
 /*
 function granulate(gA) {

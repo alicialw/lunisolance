@@ -67,21 +67,3 @@ function heatSketch(p) {
         }
     }
 }
-
-new p5(heatSketch);
-
-
-/*function mouseReleased() {
-  if (mouseButton === LEFT) {
-    newColor();
-    noiseSeed();
-  }
-  newPattern();
-  if (pause) redraw();
-}
-
-function keyPressed() {
-  if (key === ' ') pause = !pause;
-  if (key === 'S' || key === 's') saveCanvas("truchet-######", "png");
-  if (!pause) loop();
-}*/

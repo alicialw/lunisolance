@@ -40,4 +40,3 @@
     };
   };
   
-new p5(mistSketch);
