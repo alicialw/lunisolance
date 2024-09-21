@@ -59,10 +59,10 @@ let bgScene
     drawtextureSketch();
     p.noLoop();
 }
-}; */
+}; 
 
 
-new p5(textureSketch);
+new p5(textureSketch);*/
 
 
 

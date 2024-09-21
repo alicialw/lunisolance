@@ -3,7 +3,7 @@ let Drops;
 function rainSketch(p) {
   let d = [];
 
-  p.setup = function() {
+  p.setup = function () {
     bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
     bgScene.id("rain");
     p.noFill();
@@ -12,12 +12,12 @@ function rainSketch(p) {
     }
   };
 
-  p.draw = function() {
+  p.draw = function () {
     p.noStroke();
     p.frameRate();
     p.clear();
     p.rect(0, 0, p.width, p.height);
-    
+
     for (let i = 0; i < d.length; i++) {
       if (d[i].y > d[i].endPos) {
         d[i].end();
@@ -72,21 +72,4 @@ function rainSketch(p) {
     }
   }
 }
-
-
-
-/*
-function granulate(gA) {
-  bgScene.loadPixels();
-  let dst = bgScene.pixelDensity;
-  let halfImage = 4 * (bgScene.width * dst) * (bgScene.height * dst);
-  for (let ii = 0; ii < halfImage; ii += 4) {
-    grainAmount = random(-gA, gA);
-    bgScene.pixels[ii] = pg.pixels[ii] + gA;
-    bgScene.pixels[ii + 1] = bgScene.pixels[ii + 1] + grainAmount;
-    bgScene.pixels[ii + 2] = bgScene.pixels[ii + 2] + grainAmount;
-    bgScene.pixels[ii + 3] = bgScene.pixels[ii + 3] + 255;
-  }
-  bgScene.updatePixels();
-} */
 

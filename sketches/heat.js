@@ -4,7 +4,7 @@ function heatSketch(p) {
     let c0, c1;
     let pause = false;
 
-    p.setup = function() {
+    p.setup = function () {
         sTile = slide.pA2
         bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
         bgScene.id("heat");
@@ -12,18 +12,18 @@ function heatSketch(p) {
         p.newPattern();
     }
 
-    p.draw = function() {
+    p.draw = function () {
         p.newColor();
         p.drawPattern();
     }
 
-    p.newColor = function() {
+    p.newColor = function () {
         sTile = slide.pA2
         c0 = p.color(slide.secondary1)
         c0.setAlpha(slide.pB2)
     }
 
-    p.newPattern = function() {
+    p.newPattern = function () {
         m = [];
         for (let x = 0; x < p.width / sTile; x++) {
             m[x] = [];
@@ -33,7 +33,7 @@ function heatSketch(p) {
         }
     }
 
-    p.drawPattern = function() {
+    p.drawPattern = function () {
         for (let x = 0; x < p.width; x += sTile) {
             for (let y = 0; y < p.height; y += sTile) {
                 if (m[p.floor(x / sTile)][p.floor(y / sTile)] === 0) {
