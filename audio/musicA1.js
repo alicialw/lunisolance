@@ -16,7 +16,6 @@ function musicComposerA1(p) {
     }, ['C5', 'D5', 'F5', 'G5', 'A5','C6', 'F5', 'D5'], "4n").start(0),
 
     setup() {
-
     },
 
     startTransport() {
@@ -39,7 +38,6 @@ function musicComposerA1(p) {
   /*p.keyPressed = (e) => {
     sequencerObject.keyPressed(e);
   };*/
-  sequencerObject.startTransport()
   sequencerObject.startTransport()
 };
 

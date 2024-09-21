@@ -842,3 +842,4 @@ function handleGesture() {
 //peace
 
 showSlide(currentSlideIndex)
+
