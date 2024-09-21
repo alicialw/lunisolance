@@ -330,7 +330,7 @@ let dataOverlay = [
     pA1: 0,
     pA2: 10,
     pB2:0,
-    pA3: 0,
+    pA3: 75,
     pA4: 0,
   },
   {
@@ -583,7 +583,7 @@ dataOverlay.forEach((data, index) => {
 
   row.addEventListener('click', (event) => {
     currentSlideIndex = index;
-    console.log(`Clicked on row ${index}. Current slide index is now ${currentSlideIndex}`);
+    //console.log(`Clicked on row ${index}. Current slide index is now ${currentSlideIndex}`);
 
     const indexScreen = document.getElementById('indexScreen');
     if (indexScreen) {
@@ -611,7 +611,7 @@ let currentPlayingSound = null;
 function stopCurrentSound() {
   if (currentPlayingSound) {
       currentPlayingSound.disconnect();
-      console.log('Stopped the previously playing track');
+      //console.log('Stopped the previously playing track');
   }
 }
 
@@ -666,9 +666,9 @@ function showSlide(index) {
         if (audioFiles[i]) {
             audioFiles[i].toDestination() 
             currentPlayingSound = audioFiles[i];
-            console.log(`Triggering constant ${i + 1}`);
+            //console.log(`Triggering constant ${i + 1}`);
         } else {
-            console.log(`Audio file for constant ${i + 1} is undefined.`);
+            //console.log(`Audio file for constant ${i + 1} is undefined.`);
         }
 
         currentAudioIndex = i;
@@ -735,9 +735,9 @@ function toggleMuteOutput() {
     Tone.Master.mute = !Tone.Master.mute;
     isMuted = Tone.Master.mute;
     if (isMuted) {
-        console.log('Output muted');
+        //console.log('Output muted');
     } else {
-        console.log('Output unmuted');
+        //console.log('Output unmuted');
     }
 }
 

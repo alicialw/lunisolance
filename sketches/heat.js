@@ -14,7 +14,6 @@ function heatSketch(p) {
 
     p.draw = function() {
         p.newColor();
-        if (pause) p.noLoop();
         p.drawPattern();
     }
 

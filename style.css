@@ -31,13 +31,40 @@ button {
     translate:0;}
 }
 
-html, body {
+html, body, main {
   margin: 0;
   padding: 0;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
+
+/*body::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(transparent, rgba(0, 0, 0, 0.1) 0.5em);
+  position: fixed;
+  z-index: 1001;  
+  pointer-events: none 
+}*/
+
+.hiddenWrapper {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
 
 #loaderScreen {
   display: flex;
@@ -51,7 +78,7 @@ html, body {
   height: 100%;
   background: var(--primary1);
   z-index: 1000;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .loader {
@@ -84,12 +111,12 @@ html, body {
 }
 
 #layout {
-  transition: 0.5s;
-  /* filter: blur(0.05rem)*/
+  transition: 0.25s;
 }
 
 #layout > *, #content > *:not(.wheel), .title > * {
-  transition: 0.5s;
+  transition: 0.25s;
+  transition: var(--primary1) 0.5s;
 }
 
 canvas {
@@ -105,7 +132,7 @@ canvas {
   height: 100%;
   z-index: 2;
   padding: 2rem;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .han,
@@ -137,7 +164,7 @@ nav {
   font-family: "Commissioner", sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 nav > p {
@@ -156,6 +183,7 @@ nav p:nth-child(2) {
 
 nav p:nth-child(3) {
   text-align: right;
+  align-self: flex-end;
 }
 
 .date {
@@ -169,6 +197,9 @@ nav p:nth-child(3) {
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 #arrow {
@@ -234,7 +265,7 @@ nav p:nth-child(3) {
 }
 
 .wheel > * {
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .cls-1 {
@@ -297,6 +328,9 @@ nav p:nth-child(3) {
   text-transform: uppercase;
   color: var(--secondary1);
   font-size: 1.5rem;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
 }
 
 .layoutA .poem{
@@ -317,8 +351,9 @@ nav p:nth-child(3) {
 
 .layoutA .poem >* {
   background: radial-gradient(var(--primary1) 30%, rgba(255,255,255,0) 60%);
+  /*backdrop-filter: blur(0.5rem);*/
   padding: 6rem;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .layoutB {
@@ -393,7 +428,7 @@ nav p:nth-child(3) {
   color: var(--primary1);
   background: radial-gradient(var(--primary2) 25%, rgba(255,255,255,0) 75%);
   padding: 10rem 3rem;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 
 .layoutC{
@@ -497,7 +532,7 @@ text-align: left;
   font-weight: 400;
   min-width: calc((100% - 8rem)/3);
   background: linear-gradient(90deg, var(--primary1) 25%, rgba(255,255,255,0) 100%);
-  transition: 0.5s;
+  transition: 0.25s;
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -538,13 +573,14 @@ canvas {
   overflow-y: scroll;
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 0.5s opacity 1s;
+  transition: 0.5s
 }
 
 #indexScreen.visible {
   transform: translateY(0);
   opacity: 1;
   z-index: 100;
+  transition: 0.5s;
 }
 
 #indexScreen nav {
@@ -576,6 +612,22 @@ tr:hover {
 
 tr.highlighted {
   background-color: var(--secondary1);
+}
+
+#wallpaperNotice {
+  pointer-events: auto;
+  cursor:pointer;
+  height: 1rem;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.5s ;
+}
+
+#wallpaperNotice:hover{
+  pointer-events: auto;
+  cursor:pointer;
+  height: 2.4rem;
+  transition: 0.5s;
 }
 
 @media (orientation: landscape) {

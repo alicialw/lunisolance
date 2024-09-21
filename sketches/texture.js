@@ -17,11 +17,26 @@ function draw() {
         ellipse(x, y, 5, 5);
       }
     }
-  }*/
+  }
+    
+  function granulate(gA) {
+  bgScene.loadPixels();
+  let dst = bgScene.pixelDensity;
+  let halfImage = 4 * (bgScene.width * dst) * (bgScene.height * dst);
+  for (let ii = 0; ii < halfImage; ii += 4) {
+    grainAmount = random(-gA, gA);
+    bgScene.pixels[ii] = pg.pixels[ii] + gA;
+    bgScene.pixels[ii + 1] = bgScene.pixels[ii + 1] + grainAmount;
+    bgScene.pixels[ii + 2] = bgScene.pixels[ii + 2] + grainAmount;
+    bgScene.pixels[ii + 3] = bgScene.pixels[ii + 3] + 255;
+  }
+  bgScene.updatePixels();
+  */
 
 function paperFiber(p) {
   p.setup = function() {
-    p.createCanvas(p.windowWidth, p.windowHeight);
+    bgScene= p.createCanvas(p.windowWidth, p.windowHeight);
+    bgScene.id("paperFiber");
     p.colorMode(p.HSB, 100);
     p.frameRate(5);
     p.noLoop();

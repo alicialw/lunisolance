@@ -83,6 +83,7 @@ function rainSketch(p) {
       }
     }
   }
+  
 };
 
 new p5(rainSketch);

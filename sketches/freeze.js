@@ -1,10 +1,12 @@
 function freezeSketch (p) {
-  let freezeTimeOut = 1000/slide.pA4;
+  let freezeTimeOut = 10000/slide.pA4;
   let freezeAlpha = slide.pA4/3;
+  let freezeRate = 0.05
 
   p.setup = function() {
     bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
     bgScene.id("freeze");
+    p.frameRate(freezeRate)
     p.clear()
     p.noFill();
     Frosted(p);
@@ -15,6 +17,7 @@ function freezeSketch (p) {
   }
 
   function Frosted(p) {
+    p.frameRate(freezeRate)
     let strokeColor = p.color(slide.secondary2);
     strokeColor.setAlpha(freezeAlpha); 
     p.stroke(255, freezeAlpha);
@@ -32,6 +35,7 @@ function freezeSketch (p) {
       p.rect(y1, y2, 21, 232 / y1 - 3);
     }
   }
+
 };
 
 new p5(freezeSketch)

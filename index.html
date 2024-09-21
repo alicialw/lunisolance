@@ -9,26 +9,37 @@
 
   <link rel="stylesheet" type="text/css" href="style.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&family=Ojuju:wght@200..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet">
-
+    rel="stylesheet" crossorigin>
   <script src="https://unpkg.com/tone"></script>
   <script src="libraries/p5.min.js"></script>
-  <!--<script src="libraries/p5.sound.min.js"></script>-->
+  <script  type="module" src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 </head>
 
 <body id="layout" class="layoutA">
-  <div id="loaderScreen"><div class="loader"></div></div>
-  <div id="starter" class="visible">
-    <h4>This site displays the 24 Solar Terms of the Traditional&nbsp;East&nbsp;Asian Lunisolar&nbsp;Calendar.</h4>
-    <p>(Enable sound for the best experience)</p>
+  <div id="loaderScreen">
+    <div class="loader"></div>
+  </div>
+  <div class="hiddenWrapper">
+    <div id="starter" class="visible">
+      <h4>This site displays the 24 Solar Terms of the Traditional&nbsp;East&nbsp;Asian Lunisolar&nbsp;Calendar.</h4>
+      <p>(Enable sound for the best experience)</p>
+    </div>
+    <div id="indexScreen">
+      <nav>
+        <p>About</p>
+        <p id="closeIndex">Back</p>
+        <p>Credits</p>
+      </nav>
+      <table id="termIndex"></table>
+    </div>
   </div>
   <div id="overlay">
     <nav>
-      <p>Right click to save GIF<br>
+      <p><span id="wallpaperNotice">Press S to save wallpaper*<br>(Try switching with arrow keys if there's any error)</span><br>
         Double click to change layout
       </p>
       <p id="arrow">Left/Right Arrow to browse
@@ -102,15 +113,7 @@
       </svg>
     </div>
   </div>
-  <div id="indexScreen">
-    <nav>
-      <p>About</p>
-      <p id="closeIndex">Back</p>
-      <p>Credits</p>
-    </nav>
-    <table id="termIndex"></table>
-  </div>
-  <div id="noise-container"></div>
+  <!--<div id="noise-container"></div>-->
   <script src="audio/music.js"></script>
   <script src="sketches/index.js"></script>
   <script src="sketches/sketch.js"></script>
@@ -118,7 +121,7 @@
   <script src="sketches/heat.js"></script>
   <script src="sketches/mist.js"></script>
   <script src="sketches/freeze.js"></script>
-  
+
   <script src="audio/musicA1.js"></script>
   <script src="audio/musicA2.js"></script>
   <script src="audio/musicB1.js"></script>
@@ -128,6 +131,7 @@
   <script src="audio/musicD1.js"></script>
   <script src="audio/musicD2.js"></script>
 
+  <script src="sketches/capture.js"></script>
 </body>
 
 </html>
