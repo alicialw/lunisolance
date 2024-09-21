@@ -764,6 +764,17 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'h' || event.key === 'H') {
+    var overlay = document.getElementById('overlay');
+    if (overlay.style.opacity === '0') {
+      overlay.style.opacity = '1';
+    } else {
+      overlay.style.opacity = '0';
+    }
+  }
+});
+
 let touchstartX = 0;
 let touchendX = 0;
 

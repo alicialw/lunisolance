@@ -78,7 +78,7 @@ html, body, main {
   height: 100%;
   background: var(--primary1);
   z-index: 1000;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 .loader {
@@ -111,11 +111,11 @@ html, body, main {
 }
 
 #layout {
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 #layout > *, #content > *:not(.wheel), .title > * {
-  transition: 0.25s;
+  transition: 0.5s;
   transition: var(--primary1) 0.5s;
 }
 
@@ -132,7 +132,7 @@ canvas {
   height: 100%;
   z-index: 2;
   padding: 2rem;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 .han,
@@ -164,7 +164,7 @@ nav {
   font-family: "Commissioner", sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 nav > p {
@@ -265,7 +265,7 @@ nav p:nth-child(3) {
 }
 
 .wheel > * {
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 .cls-1 {
@@ -353,7 +353,7 @@ nav p:nth-child(3) {
   background: radial-gradient(var(--primary1) 30%, rgba(255,255,255,0) 60%);
   /*backdrop-filter: blur(0.5rem);*/
   padding: 6rem;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 .layoutB {
@@ -428,7 +428,7 @@ nav p:nth-child(3) {
   color: var(--primary1);
   background: radial-gradient(var(--primary2) 25%, rgba(255,255,255,0) 75%);
   padding: 10rem 3rem;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 
 .layoutC{
@@ -532,7 +532,7 @@ text-align: left;
   font-weight: 400;
   min-width: calc((100% - 8rem)/3);
   background: linear-gradient(90deg, var(--primary1) 25%, rgba(255,255,255,0) 100%);
-  transition: 0.25s;
+  transition: 0.5s;
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -620,14 +620,14 @@ tr.highlighted {
   height: 1rem;
   display: inline-block;
   overflow: hidden;
-  transition: 0.5s ;
+  transition: height 0.5s ;
 }
 
 #wallpaperNotice:hover{
   pointer-events: auto;
   cursor:pointer;
   height: 2.4rem;
-  transition: 0.5s;
+  transition: height 0.5s;
 }
 
 @media (orientation: landscape) {
