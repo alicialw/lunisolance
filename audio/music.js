@@ -51,7 +51,7 @@ const polySynthB2 = new Tone.PolySynth(Tone.Synth, {
 
 const polySynthC1 = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
-    type: "triangle6",
+    type: "triangle",
   },
   envelope: {
     attack: 0.01,
@@ -63,7 +63,7 @@ const polySynthC1 = new Tone.PolySynth(Tone.Synth, {
 
 const polySynthC2 = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
-    type: "triangle",
+    type: "triangle6",
   },
   envelope: {
     attack: 0.01,
@@ -75,7 +75,7 @@ const polySynthC2 = new Tone.PolySynth(Tone.Synth, {
 
 const polySynthD1 = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
-    type: "sine3",
+    type: "sine",
   },
   envelope: {
     attack: 0.01,
@@ -87,7 +87,7 @@ const polySynthD1 = new Tone.PolySynth(Tone.Synth, {
 
 const polySynthD2 = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
-    type: "sine",
+    type: "sine3",
   },
   envelope: {
     attack: 0.01,

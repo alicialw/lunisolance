@@ -539,7 +539,7 @@ let slide;
 let root = document.documentElement;
 let currentSlideIndex = 0;
 const audioFiles = [polySynthA1, polySynthA2, polySynthB1, polySynthB2, polySynthC1, polySynthC2, polySynthD1, polySynthD2];
-const audioRanges = [[0, 2], [3, 5], [6, 8], [9, 11], [12, 14], [15, 17], [18, 20], [21, 23]];
+const audioRanges = [[0,1], [2, 5], [6, 8], [9, 11], [12, 14], [15, 17], [18, 20], [21, 23]];
 
 
 const table = document.getElementById("termIndex");

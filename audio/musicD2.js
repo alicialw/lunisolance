@@ -5,15 +5,15 @@ function musicComposerA2(p) {
 
     seq1: new Tone.Sequence((time, note) => {
       polySynthD2.triggerAttackRelease(note, "16n", time);
-    }, ['C3', 'D3', 'F3', 'G3', 'A3','C3', 'F3', 'G3'], "2n").start(0),
+    }, ['A2', 'C3', 'D3', 'E3', 'G3','A3', 'D3', 'E3'], "2n").start(0),
 
     seq2: new Tone.Sequence((time, note) => {
       polySynthD2.triggerAttackRelease(note, "16n", time);
-    }, [['A4','G4'], 'C4', ['A4', ['G4']], ['F4',['G4']], 'D4','A3'], "8n").start(0),
+    }, [['G4','E4'], 'A3', ['G4', ['E4']], ['D4',['E4']], 'C4','A3'], "8n").start(0),
 
     seq3: new Tone.Sequence((time, note) => {
       polySynthD2.triggerAttackRelease(note, "16n", time);
-    }, ['C5', 'D5', 'F5', 'G5', 'A5','C6', 'F5', 'D5'], "4n").start(0),
+    }, ['A4', 'C5', 'D5', 'E5', 'G5','A5', 'D5', 'C5'], "4n").start(0),
 
     setup() {
     },
