@@ -522,7 +522,7 @@ let dataOverlay = [
     poem1: "Liền trời băng kết tuyết bay,\nLạnh lùng đất bắc chịu vầy biết sao!",
     poem2: "Trời cho khí hậu nam triều,\nĐông hè nóng lệnh thầy đều thích trung.",
     canvasId: "daihan",
-    primary1: "#1E2979",
+    primary1: "#242B5D",
     primary2: "#EAEAEA",
     secondary1: "#7981BB",
     secondary2: "#AAAFD6",
