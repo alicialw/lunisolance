@@ -1,6 +1,3 @@
-
-toneTransporting = false
-
 function musicComposerB1(p) {
   sequencerObject = {
 

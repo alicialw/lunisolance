@@ -8,6 +8,7 @@ function heatSketch(p) {
         sTile = slide.pA2
         bgScene = p.createCanvas(p.windowWidth, p.windowHeight);
         bgScene.id("heat");
+        p.background(0,0)
         p.noStroke();
         p.newPattern();
     }
@@ -41,7 +42,7 @@ function heatSketch(p) {
                 } else {
                     p.clear();
                 }
-                p.rect(x, y, sTile, sTile);
+                //p.rect(x, y, sTile, sTile);
             }
         }
 

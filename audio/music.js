@@ -2,6 +2,7 @@ Tone.Master.mute = false;
 Tone.Transport.bpm.value = 80
 
 const polySynthA1 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "square6",
   },
@@ -14,6 +15,7 @@ const polySynthA1 = new Tone.PolySynth(Tone.Synth, {
 });
 
 const polySynthA2 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "square3",
   },
@@ -26,6 +28,7 @@ const polySynthA2 = new Tone.PolySynth(Tone.Synth, {
 });
 
 const polySynthB1 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "sawtooth6",
   },
@@ -38,6 +41,7 @@ const polySynthB1 = new Tone.PolySynth(Tone.Synth, {
 });
 
 const polySynthB2 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "sawtooth9",
   },
@@ -50,6 +54,7 @@ const polySynthB2 = new Tone.PolySynth(Tone.Synth, {
 });
 
 const polySynthC1 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "triangle",
   },
@@ -62,6 +67,7 @@ const polySynthC1 = new Tone.PolySynth(Tone.Synth, {
 })
 
 const polySynthC2 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "triangle6",
   },
@@ -74,6 +80,7 @@ const polySynthC2 = new Tone.PolySynth(Tone.Synth, {
 });
 
 const polySynthD1 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "sine",
   },
@@ -86,6 +93,7 @@ const polySynthD1 = new Tone.PolySynth(Tone.Synth, {
 })
 
 const polySynthD2 = new Tone.PolySynth(Tone.Synth, {
+  volume: -12,
   oscillator: {
     type: "sine3",
   },
