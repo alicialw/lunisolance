@@ -620,7 +620,7 @@ dataOverlay.forEach((data, index) => {
     }
   });
 
-  row.addEventListener('click', (event) => {
+  row.addEventListener('click', () => {
     currentSlideIndex = index;
     //console.log(`Clicked on row ${index}. Current slide index is now ${currentSlideIndex}`);
 
@@ -877,6 +877,5 @@ p5.prototype.windowResized = function() {
 };
 
 let bgScene
-
 showSlide(currentSlideIndex)
 

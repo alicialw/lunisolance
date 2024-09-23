@@ -11,10 +11,6 @@ html {
   font-family: "Commissioner", sans-serif;
 }
 
-button {
-  position: relative;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -128,7 +124,6 @@ main {
 #content>*:not(.wheel),
 .title>* {
   transition: all 0.5s;
-  transition: color none;
 }
 #layout>*,
 #content>*:not(.title) {

@@ -113,5 +113,3 @@ polySynthC1.humanize = true
 polySynthC2.humanize = true
 polySynthD1.humanize = true
 polySynthD2.humanize = true */
-
-//*/

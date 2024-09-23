@@ -25,7 +25,6 @@ function rainSketch(p) {
         d[i].display();
       }
     }
-    p.loop(5)
   };
 
   class drops {

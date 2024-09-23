@@ -1,8 +1,7 @@
 function heatSketch(p) {
     let sDot
     let m;
-    let c0, c1;
-    let pause = false;
+    let c0;
 
     p.setup = function () {
         sDot = slide.pA2
@@ -67,3 +66,4 @@ function heatSketch(p) {
         }
     }
 }
+
