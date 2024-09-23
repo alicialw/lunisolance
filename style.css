@@ -664,12 +664,6 @@ tr.highlighted {
   opacity: 0;
 }
 
-#about.hidden, #credits.hidden {
-
-  overflow: hidden;
-  transition: 0.5s;
-}
-
 #about.visible, #credits.visible {
   height: 100%;
   opacity: 1;
