@@ -121,17 +121,25 @@ main {
 }
 
 #layout {
-  transition: 0.5s;
+  transition: all 0.5s;
 }
 
 #layout>*,
 #content>*:not(.wheel),
 .title>* {
-  transition: 0.5s;
+  transition: all 0.5s;
+  transition: color none;
+}
+#layout>*,
+#content>*:not(.title) {
+  will-change: top, left, bottom, right, transform
 }
 
 canvas {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #overlay {
@@ -194,7 +202,6 @@ nav p:nth-child(2) {
 
 nav p:nth-child(3) {
   text-align: right;
-  align-self: flex-end;
 }
 
 .date {
@@ -270,7 +277,7 @@ nav p:nth-child(3) {
   width: 50rem;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) rotate(calc(var(--wheelRotation)*-1));
+  transform: translate3d(-50%, -50%, 0) rotate(calc(var(--wheelRotation)*-1));
   transition: none;
   z-index: -1;
 }
@@ -301,7 +308,6 @@ nav p:nth-child(3) {
 
 .layoutA {
   background: var(--primary1);
-  --currentfill: var(--primary2);
 }
 
 .layoutA *::-moz-selection {
@@ -324,7 +330,7 @@ nav p:nth-child(3) {
   margin: 0;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .layoutA .han {
@@ -359,7 +365,7 @@ nav p:nth-child(3) {
   left: 50%;
   top: 50%;
   width: 96%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   color: var(--primary2);
 }
 
@@ -367,12 +373,10 @@ nav p:nth-child(3) {
   background: radial-gradient(var(--primary1) 30%, rgba(255, 255, 255, 0) 60%);
   /*backdrop-filter: blur(0.5rem);*/
   padding: 6rem;
-  transition: 0.5s;
 }
 
 .layoutB {
   background: var(--primary2);
-  --currentfill: var(--primary1);
 }
 
 .layoutB *::-moz-selection {
@@ -439,7 +443,7 @@ nav p:nth-child(3) {
   margin: 0;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   font-size: 3rem;
   font-family: "Philosopher", sans-serif;
   font-weight: 400;
@@ -452,7 +456,6 @@ nav p:nth-child(3) {
 
 .layoutC {
   background: var(--primary1);
-  --currentfill: var(--primary2);
 }
 
 .layoutC *::-moz-selection {
@@ -470,7 +473,7 @@ nav p:nth-child(3) {
   left: initial;
   right: 5rem;
   top: 5rem;
-  transform: translate(50%, -50%) rotate(calc(var(--wheelRotation)*-1));
+  transform: translate3d(50%, -50%, 0) rotate(calc(var(--wheelRotation)*-1));
 }
 
 .layoutC .title {
@@ -552,7 +555,6 @@ nav p:nth-child(3) {
   font-weight: 400;
   min-width: calc((100% - 8rem)/3);
   background: linear-gradient(90deg, var(--primary1) 25%, rgba(255, 255, 255, 0) 100%);
-  transition: 0.5s;
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -567,12 +569,6 @@ nav {
   /* Standard syntax */
 }
 
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 #textureContainer {
   position: fixed;
   width: 100%;
@@ -584,17 +580,21 @@ canvas {
 
 #indexScreen {
   display: flex;
+  flex-direction: column;
   position: absolute;
+  gap: 6rem;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   padding: 8rem 2rem;
-  background: var(--primary2);
+  background: var(--secondary1);
   font-family: "Commissioner", sans-serif;
   font-size: 1.5rem;
-  color: var(--primary1);
+  color: var(--primary2);
   z-index: 100;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-color: var(--primary2) var(--secondary1);
   transform: translateY(100%);
   opacity: 0;
   transition: 0.5s
@@ -608,15 +608,18 @@ canvas {
 }
 
 #indexScreen nav {
+  color: var(--primary2);
   position: fixed;
+  z-index: 100;
   top: 2rem;
   pointer-events: auto;
   cursor: pointer;
   height: 2rem;
 }
 
+
 #termIndex {
-  width: 50%;
+  max-width: min(50vh,100vw);
   gap: 1rem;
   border-collapse: collapse;
   pointer-events: auto;
@@ -630,13 +633,59 @@ td {
 }
 
 tr:hover {
-  background-color: var(--secondary2);
+  background-color: var(--primary1);
   pointer-events: auto;
   cursor: pointer;
 }
 
 tr.highlighted {
   background-color: var(--secondary1);
+}
+
+
+#about, #credits {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  background: var(--primary1);
+  margin: -8rem -2rem;
+  height: 100%;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  text-align: left;
+  pointer-events: auto;
+  opacity: 1;
+  z-index: 99;
+  overflow-y: auto;
+  align-items: center;
+  transition: 0.5s;
+  height: 0;
+  opacity: 0;
+}
+
+#about.hidden, #credits.hidden {
+
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+#about.visible, #credits.visible {
+  height: 100%;
+  opacity: 1;
+}
+
+#about > *, #credits > * {
+  max-width: min(50vh,100vw);
+}
+
+
+#credits a {
+  color: var(--primary2);
+}
+
+#credits img {
+  mix-blend-mode: screen;
 }
 
 #wallpaperNotice {

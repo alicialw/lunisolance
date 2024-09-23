@@ -32,10 +32,6 @@ function musicComposerA2(p) {
     sequencerObject.setup();
   };
 
-  /*p.keyPressed = (e) => {
-    sequencerObject.keyPressed(e);
-  };*/
-
   sequencerObject.startTransport()
 };
 

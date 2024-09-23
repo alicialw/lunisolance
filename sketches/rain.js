@@ -1,4 +1,4 @@
-let Drops;
+let drops;
 
 function rainSketch(p) {
   let d = [];
@@ -8,7 +8,7 @@ function rainSketch(p) {
     bgScene.id("rain");
     p.noFill();
     for (let i = 0; i < slide.pA1; i++) {
-      d[i] = new Drops(p);
+      d[i] = new drops(p);
     }
   };
 
@@ -25,9 +25,10 @@ function rainSketch(p) {
         d[i].display();
       }
     }
+    p.loop(5)
   };
 
-  class Drops {
+  class drops {
     constructor(p) {
       this.p = p;
       this.init();

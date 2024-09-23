@@ -25,7 +25,6 @@ function musicComposerA1(p) {
     stopTransport() {
       this.toneTransporting = false;
       Tone.Transport.stop();
-      
     }
   };
 
@@ -33,9 +32,6 @@ function musicComposerA1(p) {
     sequencerObject.setup();
   };
 
-  /*p.keyPressed = (e) => {
-    sequencerObject.keyPressed(e);
-  };*/
   sequencerObject.startTransport()
 };
 

@@ -258,7 +258,7 @@ let dataOverlay = [
     wheelRotation: "90deg",
     pA1: 0,
     pA2: 20,
-    pB2: 100,
+    pB2: 75,
     pA3: 0,
     pA4: 0,
   },
@@ -557,6 +557,10 @@ const audioRanges = [[0, 1], [2, 5], [6, 8], [9, 11], [12, 14], [15, 17], [18, 2
 const table = document.getElementById("termIndex");
 const indexScreen = document.getElementById("indexScreen");
 const closeIndex = document.getElementById("closeIndex");
+const about = document.getElementById('about');
+const credits = document.getElementById('credits');
+const aboutButton = document.getElementById('aboutButton');
+const creditsButton = document.getElementById('creditsButton');
 
 document.addEventListener('click', (event) => {
   const target = event.target;
@@ -572,6 +576,29 @@ document.addEventListener('click', (event) => {
   if (closeIndex) {
     indexScreen.classList.remove('visible');
   }
+});
+
+function toggleSectionVisibility(section) {
+  if (section.classList.contains('visible')) {
+      section.classList.remove('visible');
+  } else {
+      about.classList.remove('visible');
+      credits.classList.remove('visible');
+      termIndex.classList.remove('visible');
+      section.classList.add('visible');
+  }
+}
+
+aboutButton.addEventListener('click', function() {
+  toggleSectionVisibility(about);
+});
+
+creditsButton.addEventListener('click', function() {
+  toggleSectionVisibility(credits);
+});
+
+closeIndex.addEventListener('click', function() {
+  toggleSectionVisibility(termIndex);
 });
 
 //merging the viet entry if there's no break
@@ -621,6 +648,8 @@ const updateCSSVariables = (dataOverlay) => {
     root.style.setProperty(`--${key}`, dataOverlay[key]);
   }
 };
+
+//data to HTML
 
 function showSlide(index) {
   slide = dataOverlay[index];
@@ -702,6 +731,8 @@ function showSlide(index) {
     }
   }
 }
+
+//sync slide with date
 
 function showSlideBasedOnDate() {
   const currentDate = new Date();
@@ -840,6 +871,12 @@ function handleGesture() {
 }
 
 //peace
+
+p5.prototype.windowResized = function() {
+  this.resizeCanvas(this.windowWidth, this.windowHeight);
+};
+
+let bgScene
 
 showSlide(currentSlideIndex)
 

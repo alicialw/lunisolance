@@ -1,7 +1,7 @@
 function freezeSketch(p) {
-  let freezeTimeOut = 10000 / slide.pA4;
+  let freezeTimeOut = 50000 / slide.pA4;
   let freezeAlpha = slide.pA4 / 3;
-  let freezeRate = 0.05
+  let freezeRate = 1
 
   p.setup = function () {
     bgScene = p.createCanvas(p.windowWidth, p.windowHeight);

@@ -18,7 +18,6 @@ function mistSketch(p) {
     let strokeColor = p.color(slide.secondary2);
     strokeColor.setAlpha(slide.pA3 / 2);
     p.stroke(strokeColor);
-    // p.fill(strokeColor);
     p.fill(0, 0)
 
     let alpha = 0;
@@ -30,7 +29,6 @@ function mistSketch(p) {
         p.curveVertex(xoffset + gridSize * 1.2 * j, yoffset + gridSize * 1.3 * i + amp * alpha);
       }
       p.endShape();
-
     }
   };
   p.windowResized = function () {

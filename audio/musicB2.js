@@ -31,8 +31,7 @@ function musicComposerA2(p) {
   p.setup = () => {
     sequencerObject.setup();
   };
-
-
+  
   sequencerObject.startTransport()
 };
 
